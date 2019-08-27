@@ -1,0 +1,23 @@
+n = 100000
+full_house = 0
+full_house_prob = 0
+for (sim_roll in 1:n){
+  pair = FALSE
+  three_of_a_kind = FALSE
+  yahtzee_roll <- sample(1:6, 5, replace = TRUE)
+  tabulated_roll <- tabulate(yahtzee_roll)
+  for (i in 1:length(tabulated_roll)){
+    if (tabulated_roll[i] == 2 && pair == FALSE){
+      pair = TRUE
+    } 
+    if (tabulated_roll[i] == 3 && three_of_a_kind == FALSE){
+      three_of_a_kind = TRUE
+    }
+  }
+  if (pair == TRUE && three_of_a_kind == TRUE){
+    full_house = full_house + 1
+  }
+}
+full_house
+full_house_prob = full_house/n
+full_house_prob
